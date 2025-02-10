@@ -21,6 +21,8 @@ The minitalk communication protocol involves sending messages between two proces
 One process, called the "speaker/client" sends the message by transmitting a series of signals over the wire. 
 The other process, called the "listener/server" receives the message by interpreting the series of signals as a message.
 
+![Captura de pantalla 2025-02-10 a las 16 23 35](https://github.com/user-attachments/assets/64fdfc54-16f5-4ff8-8f60-29cf01ad1e78)
+
 -------
 
 Here is a useful guide to understand this project: https://42-cursus.gitbook.io/guide/rank-02/minitalk

@@ -25,9 +25,7 @@ The other process, called the "listener/server" receives the message by interpre
 
 -------
 
-**Usage**
-
-# 🛰️ Minitalk - A Simple Message Passing System
+ ## **Usage**
 
 Minitalk is a project that allows **inter-process communication** using Unix signals.  
 A client sends messages **bit by bit** to a server, which reconstructs and prints them.

@@ -27,8 +27,7 @@ The other process, called the "listener/server" receives the message by interpre
 
  ## **Usage**
 
-Minitalk is a project that allows **inter-process communication** using Unix signals.  
-A client sends messages **bit by bit** to a server, which reconstructs and prints them.
+Minitalk is a project that allows **inter-process communication** using Unix signals.  A client sends messages **bit by bit** to a server, which reconstructs and prints them.
 
 ---
 
@@ -41,8 +40,9 @@ make
 
 This will generate two executables:
 
-server → Listens for signals and reconstructs messages.
-client → Sends messages to the server.
+ - server → Listens for signals and reconstructs messages.
+ - client → Sends messages to the server.
+ - 
 To clean compiled files run:
 ```sh
 make clean

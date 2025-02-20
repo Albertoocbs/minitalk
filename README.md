@@ -32,7 +32,7 @@ A client sends messages **bit by bit** to a server, which reconstructs and print
 
 ---
 
-## 🛠️ Compilation
+**🛠️ Compilation**
 
 To compile the project, run:
 ```sh
@@ -58,7 +58,7 @@ To fully recompile the project run:
 make re
 ```
 
-## 🖥️ Running the Server
+**🖥️ Running the Server**
 
 Before sending messages, you must start the server run:
 ```sh
@@ -92,7 +92,7 @@ The server will then print:
 Hello, world!
 ```
 
-## 📌 Important Notes
+**📌 Important Notes**
  - The server must be running before sending a message.
  - The client sends messages character by character, bit by bit using SIGUSR1 and SIGUSR2.
  - The server will automatically detect the end of a message and print a newline.

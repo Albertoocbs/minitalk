@@ -79,9 +79,6 @@ To send a message to the server, use:
 ./client <server_pid> "<message>"
 ```
 
-<server_pid> → Replace with the PID printed by the server.
-"<message>" → The message to send (must be inside quotes).
-
 Example:
 ```sh
 ./client 12345 "Hello, world!"

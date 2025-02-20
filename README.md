@@ -40,6 +40,69 @@ To compile the project, run:
 ```sh
 make
 
+This will generate two executables:
+
+server → Listens for signals and reconstructs messages.
+client → Sends messages to the server.
+To clean compiled files:
+
+sh
+Copier
+Modifier
+make clean
+To remove executables and compiled files:
+
+sh
+Copier
+Modifier
+make fclean
+To fully recompile the project:
+
+sh
+Copier
+Modifier
+make re
+🖥️ Running the Server
+Before sending messages, you must start the server:
+
+sh
+Copier
+Modifier
+./server
+This will print the server's PID (Process ID).
+Example output:
+
+arduino
+Copier
+Modifier
+Server PID: 12345
+💡 Keep this PID! You will need it to send messages from the client.
+
+📡 Sending Messages with the Client
+To send a message to the server, use:
+
+sh
+Copier
+Modifier
+./client <server_pid> "<message>"
+<server_pid> → Replace with the PID printed by the server.
+"<message>" → The message to send (must be inside quotes).
+Example:
+
+sh
+Copier
+Modifier
+./client 12345 "Hello, world!"
+The server will then print:
+
+Copier
+Modifier
+Hello, world!
+📌 Important Notes
+The server must be running before sending a message.
+The client sends messages character by character, bit by bit using SIGUSR1 and SIGUSR2.
+The server will automatically detect the end of a message and print a newline.
+The server can handle multiple messages, but each client call sends only one message at a time.
 
 ------
 

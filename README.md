@@ -11,7 +11,7 @@ The purpose of this project is to code a small data exchange program using UNIX 
 ---
 **Status**
 
-Finished: ?. Grade: ?/100.
+Finished: 2025-02-25. Grade: 100/100.
 
 -------
 **Overview**

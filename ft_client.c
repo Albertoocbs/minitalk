@@ -6,7 +6,7 @@
 /*   By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:31:57 by aoutumur          #+#    #+#             */
-/*   Updated: 2025/02/19 16:02:17 by aoutumur         ###   ########.fr       */
+/*   Updated: 2025/02/21 08:37:56 by aoutumur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stddef.h>
 #include "ft_printf/ft_printf.h"
 
+/*
+- bit = 7;//start with the most significant bit
+- //loop from the MSB to the LSB to be able to send the bits in correct order
+- if ((c >> bit) & 1) extract only the last bit, eg. at position 7(0), 6(1)...
+- usleep() delay to ensure signal is sent avoiding overwhelming the server
+*/
 static void	ft_send_bits(int pid, char c)
 {
 	int	bit;
 
-	bit = 7;//start with the most significant bit
-	while (bit >= 0)//loop from the MSB to the LSB to be able to send the bits in correct order
+	bit = 7;
+	while (bit >= 0)
 	{
-		if ((c >> bit) & 1) //extract only the last bit, eg. at position 7 (0), 6 (1), 5 (0) etc.
-			kill(pid, SIGUSR1);// for 1s
+		if ((c >> bit) & 1)
+			kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2); // for 0s
-		usleep(42);//delay 2 ensure signal is sent avoiding overwhelming the server
+			kill(pid, SIGUSR2);
+		usleep(42);
 		bit--;
 	}
+}
 
-	}
+/*
+- ft_atoi convert string argv[1] (server pid) to integer
+- check if number of arguments is correct & loop trhoug 2nd arg & call function
+- ft_send_bits() sends bits to the server (server pid argv[1 ]+ string argv[2])
+- send null carac as termiantion signal
+*/
 int	main(int argc, char **argv)
 {
-	int	server_pid; //to save server pid
+	int	server_pid;
 	int	i;
 
 	i = 0;
 	if (argc == 3)
 	{
-		server_pid = ft_atoi(argv[1]); //transform 1st arg to an integer(pid)
-		while (argv[2][i]) //loop trhoug 2nd arg & call funciton for each carac
+		server_pid = ft_atoi(argv[1]);
+		while (argv[2][i])
 		{
 			ft_send_bits(server_pid, argv[2][i]);
 			i++;
 		}
-		ft_send_bits(server_pid, '\0'); //send null carac as termiantion signal
+		ft_send_bits(server_pid, '\0');
 	}
 	else
 	{
 		ft_printf("Error: wrong format.\n");
 		ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
-        return (1);
+		return (1);
 	}
 	return (0);
 }

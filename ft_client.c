@@ -6,15 +6,15 @@
 /*   By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:31:57 by aoutumur          #+#    #+#             */
-/*   Updated: 2025/02/21 08:37:56 by aoutumur         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:40:00 by aoutumur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf/ft_printf.h"
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "ft_printf/ft_printf.h"
 
 /*
 - bit = 7;//start with the most significant bit
@@ -33,7 +33,7 @@ static void	ft_send_bits(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(42);
+		usleep(500);
 		bit--;
 	}
 }
@@ -57,8 +57,10 @@ int	main(int argc, char **argv)
 		{
 			ft_send_bits(server_pid, argv[2][i]);
 			i++;
+			usleep(1000);
 		}
 		ft_send_bits(server_pid, '\0');
+		usleep(5000);
 	}
 	else
 	{
